@@ -18,7 +18,7 @@ class DeleteFolderRequest extends FormRequest
     public function rules()
     {
         return [
-            'idFolder' => 'required|exists:folders,id_folder',
+            'idFolder' => 'required|numeric|exists:folders,id_folder',
         ];
     }
 

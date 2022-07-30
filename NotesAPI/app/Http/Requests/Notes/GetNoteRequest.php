@@ -19,7 +19,7 @@ class GetNoteRequest extends FormRequest
     public function rules()
     {
         return [
-            'idNote' => 'required|exists:notes,id_note'
+            'idNote' => 'required|numeric|exists:notes,id_note'
         ];
     }
 

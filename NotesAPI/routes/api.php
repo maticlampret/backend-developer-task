@@ -15,6 +15,7 @@ use App\Http\Controllers\FoldersController;
 |
 */
 
+//In the future I could create Api folder inside controllers and move my 2 controllers in there to make file organisations better
 //wrote custom middleware that will attempt to auth user, but will still go to the end point if the auth fails
 Route::group(['middleware' => ['user.auth']], function() {
     Route::get('/Notes','App\Http\Controllers\NotesController@getNotes');

@@ -19,9 +19,9 @@ class CreateNoteRequest extends FormRequest
     public function rules()
     {
         return [
-            'idFolder' => 'exists:folders,id_folder', //Since my notes can be in folders or not, this is not required, if the requirement is that all notes are in folder then this needs to be required aswell
+            'idFolder' => 'numeric|exists:folders,id_folder', //Since my notes can be in folders or not, this is not required, if the requirement is that all notes are in folder then this needs to be required aswell
             'name' => 'required',
-            'idNoteType' => 'required|exists:note_types,id_note_type',
+            'idNoteType' => 'numeric|required|exists:note_types,id_note_type',
             'public' => 'in:0,1', //this value can only be 0 or 1, since it just tells us if the note is public or not
         ];
     }

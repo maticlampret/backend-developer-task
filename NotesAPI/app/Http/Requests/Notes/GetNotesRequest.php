@@ -19,7 +19,7 @@ class GetNotesRequest extends FormRequest
     public function rules()
     {
         return [
-            'idFolder' => 'exists:folders,id_folder',
+            'idFolder' => 'numeric|exists:folders,id_folder',
             'filterPublic' => 'in:0,1',
             'sortField' => 'in:name,public',
             'sortDirection' => 'in:ASC,DESC',
