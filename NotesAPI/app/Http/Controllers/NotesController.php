@@ -111,7 +111,7 @@ class NotesController extends Controller
 
         $noteToUpdate->name = Arr::get($params, 'name');
 
-        $noteToUpdate->public = Arr::get($params, 'public', 0);
+        $noteToUpdate->public = Arr::get($params, 'public');
 
         $noteToUpdate->id_note_type = Arr::get($params, 'idNoteType');
 
@@ -178,7 +178,7 @@ class NotesController extends Controller
                 'name' => Arr::get($params, 'name'),
                 'id_user' => $user->id_user,
                 'id_folder' => Arr::get($params, 'idFolder'),
-                'public' => Arr::get($params, 'public', 0),
+                'public' => Arr::get($params, 'public'),
                 'id_note_type' => Arr::get($params, 'idNoteType')
             ]
         );
@@ -240,8 +240,8 @@ class NotesController extends Controller
         if (!$note) {
             return response()->json([
                 'success' => false,
-                'message' => 'Invalid parameters.'
-            ], 200);
+                'message' => 'User cannot add to requested note.'
+            ], 403);
         }
 
         /* if note is of type "text note" and already has a body record, then another cannot be created.

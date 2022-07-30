@@ -36,7 +36,7 @@ class CreateMainTables extends Migration
             $table->longText('name');
             $table->unsignedBigInteger('id_user');
             $table->unsignedBigInteger('id_folder')->nullable(true); //in the instructions it said "notes can be organized into folders" I took this as they could be but are not necessarily always in folders, that's why I made the field nullable. I understand that when creating new notes without folders the field will need to be specifically declared as null
-            $table->tinyInteger('public')->default(0); //if this is set to 1, then the note is public, user needs to opt in to his note being public, by default it will be private
+            $table->tinyInteger('public')->nullable(); //if this is set to 1, then the note is public, user needs to opt in to his note being public, by default it will be private
             $table->unsignedBigInteger('id_note_type');
             $table->timestamps();
 
