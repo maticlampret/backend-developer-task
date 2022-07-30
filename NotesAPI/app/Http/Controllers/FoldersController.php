@@ -37,7 +37,7 @@ class FoldersController extends Controller
         return response()->json([
             'success' => true,
             'data' => $folders->get()
-        ]);
+        ], 200);
     }
 
     public function UpdateFolder(UpdateFolderRequest $request)

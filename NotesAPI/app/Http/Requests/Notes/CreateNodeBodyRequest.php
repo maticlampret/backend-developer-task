@@ -1,13 +1,14 @@
 <?php
 
-namespace App\Http\Requests\Folders;
+
+namespace App\Http\Requests\Notes;
 
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Http\Exceptions\HttpResponseException;
 use Illuminate\Contracts\Validation\Validator;
 
 
-class UpdateFolderRequest extends FormRequest
+class CreateNodeBodyRequest extends FormRequest
 {
 
     /**
@@ -18,27 +19,28 @@ class UpdateFolderRequest extends FormRequest
     public function rules()
     {
         return [
-            'idFolder' => 'required|exists:folders,id_folder',
-            'name' => 'required',
+            'idNote' => 'required|exists:notes,id_note',
+            'text' => 'required',
         ];
     }
 
     public function failedValidation(Validator $validator)
     {
         throw new HttpResponseException(response()->json([
-            'success'   => false,
-            'message'   => 'Validation errors',
-            'errors'      => $validator->errors()
+            'success' => false,
+            'message' => 'Validation errors',
+            'errors' => $validator->errors()
         ]));
 
     }
 
     public function messages()
     {
+
         return [
-            'name.required' => 'name is required',
-            'idFolder.required' => 'idFolder is required',
-            'idFolder.exists' => 'Invalid value for idFolder'
+            'idNote.required' => 'idNote is required',
+            'idNote.exists' => 'Invalid value for idNote',
+            'text' => 'text is required',
         ];
 
     }
