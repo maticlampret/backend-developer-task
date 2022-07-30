@@ -28,7 +28,7 @@ After setting up the database information we can begin to create database struct
 
 ###Notes
 * Api uses middleware to auth user and request data validation to ensure the send data is correct for the method that user is calling.
-* All of the logic is located in [FoldersController](/NotesAPI/app/Http/Controllers/FoldersController.php) and [NotesController](NotesAPI/app/Http/Controllers/NotesController.php).
+* All of the logic is located in [FoldersController](/NotesAPI/app/Http/Controllers/FoldersController.php) and [NotesController](/NotesAPI/app/Http/Controllers/NotesController.php).
 * Inside specific methods I check to make sure user can perform the action he is trying to do and also make sure the action is consistent with application logic (for .
 * I tried writing descriptive messages when error handling so frontend can give the user the correct information about what is wrong.
 
