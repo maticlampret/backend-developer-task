@@ -20,7 +20,7 @@ class GetNotesRequest extends FormRequest
     {
         return [
             'idFolder' => 'numeric|exists:folders,id_folder',
-            'filterPublic' => 'in:0,1',
+            'filterPublic' => 'in:1|nullable', 
             'sortField' => 'in:name,public',
             'sortDirection' => 'in:ASC,DESC',
             'searchTerm' => 'min:3', // search term should be at least 3 char long

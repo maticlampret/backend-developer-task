@@ -42,7 +42,9 @@ class NotesController extends Controller
             $notes->where('id_folder', Arr::get($params, 'idFolder'));
         }
 
-        //Since filterPublic can have 0 when filtering only private notes I needed to use array_key_exists instead of Arr::get()
+        /* Since filterPublic can have null when filtering only private notes I needed to use array_key_exists instead of Arr::get()
+        Currently frontend needs to send 1 if filtering by public and empty filterPublic to filter by private, this could probably be written
+        better */
         if ($user && array_key_exists('filterPublic', $params)) {
             $notes->where('public', Arr::get($params, 'filterPublic'));
         }
