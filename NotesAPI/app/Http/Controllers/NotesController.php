@@ -44,7 +44,7 @@ class NotesController extends Controller
 
         /* Since filterPublic can have null when filtering only private notes I needed to use array_key_exists instead of Arr::get()
         Currently frontend needs to send 1 if filtering by public and empty filterPublic to filter by private, this could probably be written
-        better */
+        better so when frontend sends public = 0 it also filters to private notes */
         if ($user && array_key_exists('filterPublic', $params)) {
             $notes->where('public', Arr::get($params, 'filterPublic'));
         }
@@ -309,7 +309,8 @@ class NotesController extends Controller
     in "text note" he will delete entire body and possibly write a new one and in "list note" he deletes one list item's he doesn't want anymore.
     This of course is not deleting entire note, for example lets say user has a shopping list and he decides that he no longer needs a particular item.
     He would delete just that item from shopping list note which would send the request here. I think there is a case for having this function just for
-    the list notes and not also text notes, but currently I implemented it for both types*/
+    the list notes and not also text notes, but currently I implemented it for both types. Another improvement is possibly moving noteBody operation to its own controller
+    but right now I decided to leave it here.*/
     public function DeleteNoteBody(DeleteNoteBodyRequest $request)
     {
         $user = Auth::user();
