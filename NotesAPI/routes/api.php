@@ -43,7 +43,7 @@ Route::group(['middleware' => ['auth.username']], function() {
     Route::delete('/Note/{idNote}', 'App\Http\Controllers\NotesController@DeleteNote');
 
     //Note bodies
-    Route::post('/NoteBody', 'App\Http\Controllers\NotesController@CreateNodeBody');
-    Route::put('/NoteBody', 'App\Http\Controllers\NotesController@UpdateNoteBody');
-    Route::delete('/NoteBody', 'App\Http\Controllers\NotesController@DeleteNoteBody');
+    Route::post('/note-body', 'App\Http\Controllers\NotesController@CreateNodeBody');
+    Route::put('/note-body', 'App\Http\Controllers\NotesController@UpdateNoteBody');
+    Route::delete('/note-body', 'App\Http\Controllers\NotesController@DeleteNoteBody');
 });

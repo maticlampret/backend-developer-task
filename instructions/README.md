@@ -33,8 +33,6 @@ After setting up the database information we can begin to create database struct
 * I  tried to write as many comments in code to explain my thinking 
 * I tried writing descriptive messages when error handling so frontend can give the user the correct information about what is wrong.
 
-
-
 ### Running the app
 You can start the app by going to root folder and running:  <strong> php run artisan </strong>
 
