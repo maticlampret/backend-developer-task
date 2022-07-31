@@ -27,7 +27,7 @@ DB_PASSWORD=matic
 After setting up the database information we can begin to create database structure and import test data. The information for this is located in the database instructions.
 
 ### Notes
-* Api uses middleware to auth user and request data validation to ensure the send data is correct for the method that user is calling.
+* Api uses middleware to auth user and request data validation to ensure the sent data is correct for the endpoint that user is calling.
 * All of the logic is located in [FoldersController](/NotesAPI/app/Http/Controllers/FoldersController.php) and [NotesController](/NotesAPI/app/Http/Controllers/NotesController.php).
 * When user is not authenticated I return the basic laravel unauthorized message, if this was a real project I would write custom messages with just json.
 * I  tried to write as many comments in code to explain my thinking 
