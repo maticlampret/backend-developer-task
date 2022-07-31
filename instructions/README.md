@@ -12,7 +12,7 @@ You can provide Docker and Docker Compose files instead.
 
 ### Setup
 I used PHP and Laravel for building the API.
-Before installing composer you have to have installed PHP. I was using version 7.3.31 but never version should work aswell PHP can be downloaded [here](https://www.php.net/downloads.php "Download PHP"). After installing composer the next install is [composer](https://getcomposer.org/doc/00-intro.md "Download PHP"). After installing both PHP and composer and cloning the repository, you can go into NotesAPI and run: <br><strong>composer install </strong>
+Before installing composer you have to have installed PHP. I was using version 7.3.31 but never version should work aswell PHP can be downloaded [here](https://www.php.net/downloads.php "Download PHP"). After installing PHP the next install is [composer](https://getcomposer.org/doc/00-intro.md "Download PHP"). After installing both PHP and composer and cloning the repository, you can go into NotesAPI and run: <br><strong>composer install </strong>
 
 ### Variables to be set
 After composer installs all dependencies, you can copy the the .env.sample in root directory and rename it to .env. The only thing that needs to be changed here is the connection data for the database. Bellow is an example of the configuration I was using in testing:
