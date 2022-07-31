@@ -18,7 +18,6 @@ class UpdateFolderRequest extends FormRequest
     public function rules()
     {
         return [
-            'idFolder' => 'required|numeric|exists:folders,id_folder',
             'name' => 'required',
         ];
     }
@@ -37,8 +36,6 @@ class UpdateFolderRequest extends FormRequest
     {
         return [
             'name.required' => 'name is required',
-            'idFolder.required' => 'idFolder is required',
-            'idFolder.exists' => 'Invalid value for idFolder'
         ];
 
     }

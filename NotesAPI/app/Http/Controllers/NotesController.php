@@ -5,8 +5,6 @@ namespace App\Http\Controllers;
 use App\Http\Requests\Notes\GetNotesRequest;
 use App\Http\Requests\Notes\UpdateNoteRequest;
 use App\Http\Requests\Notes\CreateNoteRequest;
-use App\Http\Requests\Notes\GetNoteRequest;
-use App\Http\Requests\Notes\DeleteNoteRequest;
 use App\Http\Requests\Notes\CreateNodeBodyRequest;
 use App\Http\Requests\Notes\UpdateNoteBodyRequest;
 use App\Http\Requests\Notes\DeleteNoteBodyRequest;
@@ -71,7 +69,7 @@ class NotesController extends Controller
         ], 200);
     }
 
-    public function UpdateNote(UpdateNoteRequest $request)
+    public function UpdateNote($idNote, UpdateNoteRequest $request)
     {
         $user = Auth::user();
 
@@ -79,7 +77,7 @@ class NotesController extends Controller
 
         $noteToUpdate = Notes::where('id_user', $user->id_user)
             ->withCount('body')
-            ->find(Arr::get($params, 'idNote'));
+            ->find($idNote);
 
         if (!$noteToUpdate) {
             return response()->json([
@@ -126,15 +124,13 @@ class NotesController extends Controller
         ], 200);
     }
 
-    public function deleteNote(DeleteNoteRequest $request)
+    public function deleteNote($idNote)
     {
         $user = Auth::user();
 
-        $params = $request->all();
-
         $note = Notes::with('body')
             ->where('id_user', $user->id_user)
-            ->find(Arr::get($params, 'idNote'), ['id_note', 'name']);
+            ->find($idNote, ['id_note', 'name']);
 
         if (!$note) {
             return response()->json([
@@ -192,24 +188,22 @@ class NotesController extends Controller
         ], 200);
     }
 
-    public function GetNote(GetNoteRequest $request)
+    public function GetNote($idNote)
     {
         $user = Auth::user();
-
-        $params = $request->all();
 
         //where('public', 1) could also be moved to model scope since it's used a couple of times
         if (!$user) {
             $note = Notes::where('public', 1)
                 ->with('body')
-                ->find(Arr::get($params, 'idNote'), ['id_note', 'name']);
+                ->find($idNote, ['id_note', 'name']);
         } else {
             $note = Notes::with('body')
                 ->Where(function ($query) use ($user) {
                     $query->where('public', 1);
                     $query->Orwhere('id_user', $user->id_user);
                 })
-                ->find(Arr::get($params, 'idNote'), ['id_note', 'name']);
+                ->find($idNote, ['id_note', 'name']);
         }
 
         if (!$note) {

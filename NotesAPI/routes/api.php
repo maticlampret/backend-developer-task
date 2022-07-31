@@ -18,8 +18,8 @@ use App\Http\Controllers\FoldersController;
 //In the future I could create Api folder inside controllers and move my 2 controllers in there to make file organisations better
 //wrote custom middleware that will attempt to auth user, but will still go to the end point if the auth fails
 Route::group(['middleware' => ['user.auth']], function() {
-    Route::get('/Notes','App\Http\Controllers\NotesController@getNotes');
-    Route::get('/Note', 'App\Http\Controllers\NotesController@GetNote');
+    Route::get('/Note','App\Http\Controllers\NotesController@getNotes');
+    Route::get('/Note/{idNote}', 'App\Http\Controllers\NotesController@GetNote');
 
 });
 
@@ -31,16 +31,16 @@ from database if that data is correct and return exception otherwise. Currently 
 laravel but also know how to write it manually. */
 Route::group(['middleware' => ['auth.username']], function() {
     //Folders
-    Route::get('/Folders','App\Http\Controllers\FoldersController@GetFolders');
-    Route::get('/Folder','App\Http\Controllers\FoldersController@GetFolder');
+    Route::get('/Folder','App\Http\Controllers\FoldersController@GetFolders');
+    Route::get('/Folder/{idFolder}','App\Http\Controllers\FoldersController@GetFolder');
     Route::post('/Folder', 'App\Http\Controllers\FoldersController@CreateFolder');
-    Route::put('/Folder', 'App\Http\Controllers\FoldersController@UpdateFolder');
-    Route::delete('/Folder', 'App\Http\Controllers\FoldersController@DeleteFolder');
+    Route::put('/Folder/{idFolder}', 'App\Http\Controllers\FoldersController@UpdateFolder');
+    Route::delete('/Folder/{idFolder}', 'App\Http\Controllers\FoldersController@DeleteFolder');
 
     //Notes
-    Route::put('/Note', 'App\Http\Controllers\NotesController@UpdateNote');
+    Route::put('/Note/{idNote}', 'App\Http\Controllers\NotesController@UpdateNote');
     Route::post('/Note', 'App\Http\Controllers\NotesController@CreateNote');
-    Route::delete('/Note', 'App\Http\Controllers\NotesController@DeleteNote');
+    Route::delete('/Note/{idNote}', 'App\Http\Controllers\NotesController@DeleteNote');
 
     //Note bodies
     Route::post('/NoteBody', 'App\Http\Controllers\NotesController@CreateNodeBody');

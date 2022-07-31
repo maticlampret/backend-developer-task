@@ -40,14 +40,14 @@ class FoldersController extends Controller
         ], 200);
     }
 
-    public function UpdateFolder(UpdateFolderRequest $request)
+    public function UpdateFolder($idFolder, UpdateFolderRequest $request)
     {
         $user = Auth::user();
 
         $params = $request->all();
 
         $folderToUpdate = Folders::where('id_user', $user->id_user)
-            ->find(Arr::get($params, 'idFolder'));
+            ->find($idFolder);
 
         if (!$folderToUpdate) {
             return response()->json([
@@ -66,15 +66,13 @@ class FoldersController extends Controller
         ], 200);
     }
 
-    public function DeleteFolder(DeleteFolderRequest $request)
+    public function DeleteFolder($idFolder)
     {
         $user = Auth::user();
 
-        $params = $request->all();
-
         $folderToDelete = Folders::withCount('notes')
             ->where('id_user', $user->id_user)
-            ->find(Arr::get($params, 'idFolder'));
+            ->find($idFolder);
 
         if (!$folderToDelete) {
             return response()->json([
@@ -121,15 +119,13 @@ class FoldersController extends Controller
         ], 200);
     }
 
-    public function GetFolder(GetFolderRequest $request)
+    public function GetFolder($idFolder)
     {
         $user = Auth::user();
 
-        $params = $request->all();
-
         $folder = Folders::where('id_user', $user->id_user)
             ->withCount('notes')
-            ->find(Arr::get($params, 'idFolder'), ['id_folder', 'name']);
+            ->find($idFolder, ['id_folder', 'name']);
 
         if (!$folder) {
             return response()->json([

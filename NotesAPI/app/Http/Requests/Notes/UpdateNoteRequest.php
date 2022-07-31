@@ -23,7 +23,6 @@ class UpdateNoteRequest extends FormRequest
             'name' => 'required',
             'idNoteType' => 'required|numeric|exists:note_types,id_note_type',
             'public' => 'in:0,1',  //this value can only be 0 or 1, since it just tells us if the note is public or not
-            'idNote' => 'required|numeric|exists:notes,id_note'
         ];
     }
 
@@ -45,8 +44,6 @@ class UpdateNoteRequest extends FormRequest
             'idNoteType.exists' => 'Invalid value for idNoteType',
             'idFolder.exists' => 'Invalid value for idFolder',
             'public.in' => 'Incorrect value for public',
-            'idNote.required' => 'idNote is required',
-            'idNote.exists' => 'Invalid value for idNote'
         ];
     }
 }
