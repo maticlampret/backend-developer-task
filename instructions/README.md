@@ -34,7 +34,7 @@ After setting up the database information we can begin to create database struct
 * I tried writing descriptive messages when error handling so frontend can give the user the correct information about what is wrong.
 
 ### Running the app
-You can start the app by going to root folder and running:  <strong> php run artisan </strong>
+You can start the app by going to root folder and running:  <strong> php artisan serve </strong>
 
 ### API documentation
 I tried documenting the API through using postman documenter. The published API documentation can be found [here](https://documenter.getpostman.com/view/22477830/UzdzSQAx "API documentatition"). In the documentation I list some of the possible response for routes but not all, ofcourse there are others that the frontend receives in case there is a problem with the send data or user is not authenticated. This is my first time documentating an API in this way since we usually use Swagger at work, so there are probably some mistake in terms of using the postman tool I just wanted to document a litle bit of the API so whoever uses it doesnt have to go in "completly blind". If you have any question please contact me at matic.lampret@gmail.com.
